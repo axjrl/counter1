@@ -1,0 +1,19 @@
+.mainContent {
+  .menu {
+    display: flex;
+    background-color: #d3d3d3;
+    height: 30px;
+    width: 200px;
+    border-radius: 10px;
+    margin: auto;
+    &__item {
+      width: 50%;
+      cursor: pointer;
+      p {
+        font-weight: 700;
+        margin-top: 8px;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.counter {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  &__table {
+    margin-left: 200px;
+  }
+}
+.options {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.inputFieldForm {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  &__input {
+    margin-left: 20px;
+    p {
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+  &__name {
+    width: 130px;
+    height: 30px;
+    font-size: 20px;
+    border: 2px solid #414042;
+  }
+  &__key, &__key__focused {
+    font-size: 20px;
+    border: 2px solid #414042;
+    width: 70px;
+    height: 30px;
+  }
+  &__save {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #414042;
+    height: 30px;
+    margin-top: 60px;
+  }
+}
+.counter {
+  &__table {
+    display: flex;
+    flex-direction: column;
+    &__row {
+      display: flex;
+      &__name {
+        width: 200px;
+      }
+      &__key {
+        width: 200px;
+      }
+    }
+    p {
+      font-size: 20px;
+      padding: 5px;
+    }
+    &__name {
+
+    }
+  }
+}
+.addField {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #414042;
+  height: 30px;
+}
+.addField:hover {
+  color: #414042;
+  border: 3px solid #414042;
+  background-color: #d3d3d3;
+}
