@@ -5,11 +5,13 @@ import {Fields} from "../../../api/fields";
 
 import { useTracker } from 'meteor/react-meteor-data'
 import Table from "./Table";
+import {notify} from "../../notify/notify";
 
 const Counter = ({increase, setActiveFolder, activeFolder}) => {
     const [addingFieldAction, setAddingFieldAction] = useState(false)
     const [folders, setFolders] = useState([])
     const [fields, setFields] = useState([])
+
     useTracker(()=>{
         Meteor.subscribe('getFields')
         setFolders(Fields.find({type:"folder", user: Meteor.userId()}).fetch())
@@ -20,8 +22,9 @@ const Counter = ({increase, setActiveFolder, activeFolder}) => {
         event.preventDefault();
         Meteor.call("createFolder", name, Meteor.userId());
         setAddingFieldAction(false)
+        notify();
     }
-
+    console.log(folders)
     return (
         <div>
             {!activeFolder ? <div className="folders">
@@ -30,7 +33,7 @@ const Counter = ({increase, setActiveFolder, activeFolder}) => {
                     <p className="folders__row__name" style={{fontWeight:"bold", fontSize:25}}>FIELDS</p>
                 </div>
                 {folders ? folders.map((folder)=> {
-                    return <div className="folders__row">
+                    return <div key={folder._id} className="folders__row">
                         <p className="folders__row__name">{folder.name}</p>
                         <p className="folders__row__name">{fields.filter((field)=>{return field.folder === folder._id}).length}</p>
                         <button className="folders__row__open" onClick={()=>{setActiveFolder(folder._id)}}>

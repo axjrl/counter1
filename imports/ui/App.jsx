@@ -3,6 +3,7 @@ import Header from "./Header/Header";
 import MainContent from "./MainContent/MainContent";
 import Footer from "./Footer/Footer";
 import RegLogForm from "./RegLogForm/RegLogForm";
+import {ToastContainer} from "react-toastify";
 
 export const App = () => {
     const [color, setColor] = useState("#414042");
@@ -18,6 +19,7 @@ export const App = () => {
     }
     return (
         <div className="main">
+            <ToastContainer/>
             <Header color={color} setActiveFolder={setActiveFolder}/>
             {Meteor.userId() ?<MainContent increase={increase} setActiveFolder={setActiveFolder} activeFolder={activeFolder}/> : <RegLogForm/>}
             <Footer/>

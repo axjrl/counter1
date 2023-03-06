@@ -1,21 +1,28 @@
 import React, {useState} from 'react';
 import './RegLogForm.scss'
+import 'react-toastify/dist/ReactToastify.css';
+import {notify} from "../notify/notify";
 const RegLogForm = () => {
     const [formState, setFormState] = useState("login");
+
     function register(e) {
         e.preventDefault()
         Meteor.call("registerUser", e.target[0].value, e.target[1].value,(err,res) =>{
+            console.log(err, res)
             if(res) {
                 setFormState("login");
+                notify();
             }
         })
 
     }
+    console.log(formState)
     function login (e) {
         e.preventDefault()
         Meteor.loginWithPassword(e.target[0].value, e.target[1].value,() =>{
             window.location.reload()
         });
+        notify();
     }
     return (
         <div className="loginElement">

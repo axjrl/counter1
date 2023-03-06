@@ -33,6 +33,7 @@ Meteor.methods({
             email: email,
             password: password
         });
+        return "success";
     },
 
     deleteFolder (folder) {
@@ -49,7 +50,28 @@ Meteor.methods({
         Fields.remove({folder:folder,})
     },
     restoreField (field) {
-
+        if(field.field.type === "folder") {
+            Fields.insert({_id: field.field._id, name: field.field.name, user: field.field.user, type:"folder"});
+            History.find({"field.folder": field.field._id}).fetch().map((fieldDeleted)=>{
+                Fields.insert({name: fieldDeleted.field.name, key: fieldDeleted.field.key, count: fieldDeleted.field.count, user: fieldDeleted.field.user, folder: fieldDeleted.field.folder, type:"field"})
+                History.remove({_id:fieldDeleted._id})
+            })
+            History.remove({"field._id": field.field._id});
+        }
+        else {
+            if(History.find({"field._id": field.field.folder})){
+                History.find({"field._id": field.field.folder}).fetch().map((folder)=>{
+                    Fields.insert({_id: folder.field._id, name: folder.field.name, user: folder.field.user, type:"folder"});
+                    History.remove({_id:folder._id})
+                })
+                Fields.insert({name: field.field.name, key: field.field.key, count: field.field.count, user: field.field.user, folder: field.field.folder, type:"field"})
+                History.remove({_id:field._id})
+            }
+            else {
+                Fields.insert({name: field.field.name, key: field.field.key, count: field.field.count, user: field.field.user, folder: field.field.folder, type:"field"})
+                History.remove({_id:field._id})
+            }
+        }
     }
 })
 Meteor.publish('getFields', function () {

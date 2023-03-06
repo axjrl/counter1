@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Fields} from "../../../api/fields";
 import { useTracker } from 'meteor/react-meteor-data'
 import './Counter.scss'
+import {notify} from "../../notify/notify";
 
 const Table = ({increase, activeFolder, setActiveFolder}) => {
     const [actionInput, seActionInput] = useState(false);
@@ -13,6 +14,7 @@ const Table = ({increase, activeFolder, setActiveFolder}) => {
         event.preventDefault();
         Meteor.call("insertField", name, pressedKey, Meteor.userId(), activeFolder);
         setAddingFieldAction(false)
+        notify();
     }
 
     useTracker(()=>{
@@ -63,7 +65,7 @@ const Table = ({increase, activeFolder, setActiveFolder}) => {
                 </div>
                 {fields.map((field)=> {
                     return <div key={field._id} className="counter__table__row">
-                        <button className="counter__table__row__delete" onClick={()=>Meteor.call("deleteField", Meteor.userId(), activeFolder, field.key, field._id)}><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"/></svg></button>
+                        <button className="counter__table__row__delete" onClick={()=>{Meteor.call("deleteField", Meteor.userId(), activeFolder, field.key, field._id);notify();}}><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"/></svg></button>
                         <p className="counter__table__row__name">{field.name}</p>
                         <p className="counter__table__row__key">{converter(field.key?.toString())}</p>
                         <div className="counter__table__row__count">
