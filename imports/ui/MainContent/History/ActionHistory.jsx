@@ -9,8 +9,6 @@ const ActionHistory = () => {
     useTracker(()=>{
         Meteor.subscribe('getHistory')
         setHistory(History.find({user: Meteor.userId()}).fetch().sort(function(a,b){
-            // Turn your strings into dates, and then subtract them
-            // to get a value that is either negative, positive, or zero.
             return new Date(b.timestamp) - new Date(a.timestamp);
         }))
     },[])
