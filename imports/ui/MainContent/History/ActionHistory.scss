@@ -1,0 +1,28 @@
+.historyContainer {
+  margin-left: 15%;
+  margin-top: 20px;
+  .history {
+    width: 85%;
+    border-radius: 5px;
+    border: 4px solid rgba(65, 64, 66, 0.8);
+    color: #414042;
+    fill: #414042;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 20px;
+    &__action {
+      margin-top:14px;
+      fill: rgba(65, 64, 66, 0.8);
+    }
+    p {
+      font-size: 15px;
+      font-weight: 700;
+      margin-left: 20px;
+    }
+    .type {
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+  }
+}

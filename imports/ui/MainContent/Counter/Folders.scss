@@ -1,0 +1,34 @@
+.folders{
+  margin-left: 22%;
+  margin-top: 20px;
+  .folders__row {
+    display: flex;
+    &__name {
+      margin-right: 20px;
+      width: 100px;
+    }
+    &__open {
+      width: 41px;
+      height: 34px;
+      padding:5px;
+      margin-top: 10px;
+      border: 2px solid #414042;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: #d3d3d3;
+      fill:#414042;
+      margin-right: 20px;
+    }
+    &__open:hover {
+      background-color: #414042;
+      border-radius: 5px;
+      fill: white;
+    }
+    .trashCan {
+      padding: 3px;
+    }
+  }
+}
+.folderName {
+  margin-left: 50px;
+}

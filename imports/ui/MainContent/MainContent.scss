@@ -3,17 +3,33 @@
     display: flex;
     background-color: #d3d3d3;
     height: 30px;
-    width: 200px;
+    width: 300px;
     border-radius: 10px;
     margin: auto;
     &__item {
-      width: 50%;
+      width: 100px;
       cursor: pointer;
       p {
         font-weight: 700;
-        margin-top: 8px;
+        margin-top: 5px;
         text-align: center;
       }
+    }
+    &__item:hover {
+      color: white;
+      background-color: #414042;
+    }
+    .history {
+      border-radius: 0 10px 10px 0
+    }
+    .history:hover {
+      border-radius: 0 10px 10px 0
+    }
+    .counter {
+      border-radius: 10px 0 0 10px;
+    }
+    .counter:hover   {
+      border-radius: 10px 0 0 10px;
     }
   }
 }
