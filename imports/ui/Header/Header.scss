@@ -7,4 +7,56 @@
     margin: 30px auto auto;
     cursor: pointer;
   }
+  margin-bottom: 50px;
+}
+.menu {
+  margin: 20px auto auto;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  background-color: #d3d3d3;
+  height: 30px;
+  border-radius: 10px;
+  &__item {
+    display: flex;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    a {
+      width: 100px;
+      text-decoration: none;
+      color: #414042;
+      height: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      p {
+        margin-top: 5px;
+        padding: 0;
+      }
+    }
+    .active, a:hover {
+      background-color: #414042;
+      color: white;
+    }
+  }
+  .history{
+    a {
+      border-radius: 0 10px 10px 0
+    }
+  }
+  .history:hover {
+    a {
+      border-radius: 0 10px 10px 0
+    }
+  }
+  .counter {
+    a {
+      border-radius: 10px 0 0 10px;
+    }
+  }
+  .counter:hover   {
+    a {
+      border-radius: 10px 0 0 10px;
+    }
+  }
 }

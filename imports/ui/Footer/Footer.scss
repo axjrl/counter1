@@ -1,10 +1,17 @@
 .footer {
   display: flex;
-  position: fixed;
-  bottom: 60px;
+  position: absolute;
   width: 100%;
-  p {
+  height: 100px;
+  background-color: white;
+  margin-top: 100px;
+  div {
     margin: auto;
     color: rgba(65, 64, 66, 0.2);
+    display: flex;
+    a {
+      margin: 16px 8px;
+      color: rgba(65, 64, 66, 0.2);
+    }
   }
 }

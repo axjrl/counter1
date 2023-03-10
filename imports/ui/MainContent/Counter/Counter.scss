@@ -22,6 +22,9 @@
     padding: 4px;
     margin: 20px auto;
   }
+  .link {
+    margin: 0 auto;
+  }
   .addField:hover {
     color: #414042;
     border: 3px solid #414042;
@@ -33,14 +36,13 @@
   .inputFieldForm {
     display: flex;
     height: 40px;
-    align-items: flex-end;
+    align-items: center;
     &__input {
       display: flex;
       margin-right: 30px;
       align-items: center;
       p {
         margin: 0;
-        padding: 0 5px !important;
         font-size: 20px;
         font-weight: 700;
       }
@@ -69,7 +71,10 @@
     }
   }
 }
-
+.noFolders {
+  font-size: 20px;
+  color: rgba(65, 64, 66, 0.3);
+}
 
 
 .counter {

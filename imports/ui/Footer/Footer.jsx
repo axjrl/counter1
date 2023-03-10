@@ -3,7 +3,7 @@ import "./Footer.scss"
 const Footer = () => {
     return (
         <div className="footer">
-            <p>Plus One | Developed & designed by Ilja Dikteriov | 1.0.2</p>
+            <div><p>Plus One | Developed & designed by</p><a target="_blank" href="https://www.linkedin.com/in/ilja-dikteriov-569787253/">Ilja Dikteriov</a><p>| 1.1.0</p></div>
         </div>
     );
 };

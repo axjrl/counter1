@@ -14,7 +14,7 @@ const ActionHistory = () => {
         }))
     },[])
     return (
-        <div>
+        <>
             <div className="historyContainer">
                 {history.map((action)=> {
                     return <div key={action._id} className="history">
@@ -44,7 +44,7 @@ const ActionHistory = () => {
                 })}
             </div>
             {history.length < 1 ? <p className="noHistory">No history yet</p> : <p></p>}
-        </div>
+        </>
     );
 }
 

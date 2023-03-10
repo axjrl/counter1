@@ -7,14 +7,18 @@ const RegLogForm = () => {
 
     function register(e) {
         e.preventDefault()
-        Meteor.call("registerUser", e.target[0].value, e.target[1].value,(err,res) =>{
-            console.log(err, res)
-            if(res) {
-                setFormState("login");
-                notify();
-            }
-        })
-
+        if (e.target[1].value === e.target[2].value) {
+            Meteor.call("registerUser", e.target[0].value, e.target[1].value,(err,res) =>{
+                console.log(err, res)
+                if(res) {
+                    setFormState("login");
+                    notify();
+                }
+            })
+        }
+        else {
+            notify();
+        }
     }
     console.log(formState)
     function login (e) {
@@ -25,15 +29,16 @@ const RegLogForm = () => {
         notify();
     }
     return (
-        <div className="loginElement">
-            {formState === "login" ? <form onSubmit={(e)=>login(e)} className="registerForm">
+        <div className="regFormElem">
+            {formState === "login" ? <form onSubmit={(e)=>login(e)} className="autForm login">
                 <p>Email: <input className="email" required type="email" name="email"/></p>
                 <p>Password: <input required type="password" name="password"/></p>
                 <p><input className="button" type="submit" value="Login"/></p>
-            </form> : <form onSubmit={(e)=>register(e)} className="registerForm">
+            </form> : <form onSubmit={(e)=>register(e)} className="autForm reg">
                     <p>Email: <input className="email" required type="email" name="email"/></p>
-                    <p>Password: <input required type="password" name="password"/></p>
-                    <p><input className="button" type="submit" value="Register"/></p>
+                    <p>Password: <input className="password" required type="password" name="password"/></p>
+                    <p>Repeat password: <input required type="password" name="passwordRepeat"/></p>
+                <p><input className="button" type="submit" value="Register"/></p>
                 </form>}
             <div className="buttons">
                 <div className="loginText" style={formState === "login" ? {display:"none"}: {}}><p>Already have an account? </p> <p onClick={()=>{setFormState("login")}} style={{cursor:"pointer", color:"#5271cb"}}>Login</p></div>
